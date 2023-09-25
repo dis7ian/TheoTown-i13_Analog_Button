@@ -1,0 +1,35 @@
+{
+   "id": "$i13_analog_button00",
+   "version": 160,
+   "author": "ian`",
+   "title": "i13 Analog Button",
+   "thumbnail": "preview.png",
+   "category": "tools",
+   "url": "https://github.com/dis7ian/TheoTown-i13_Analog_Button/",
+   "multiplayer": true,
+   "min version": 11045,
+   "text": "This tool will be helped for mobile users to move the city view from end to end easily.
+
+Plugin Settings:
+  1. Show Button: to de/activating the plugin.
+  2. Auto Hide: to de/activating the auto hide feature.
+  3. Show When Moving the View: if enabled, the button will be unhidden if the city view is moved.
+  4. Opposite Position to Sidebar: if enabled, the button position will be on the other side from sidebar.
+  5. Show In Build Mode: if enabled, the button will not be hidden in the build mode.
+  6. Reset: to reset this plugin settings.
+  7. Button Frame: to change the button frames. The frames must be contains 2 frames with 30x30 pixels size.
+  8. Minimum Alpha When Hiding the Button: the minimum alpha of the button hide when unused, the 0 value will be totally unseen.
+  9. Button Hiding Timeout: to set the timeout in millisecond to hide the button when unused.
+  10. Movement Speed: to set the speed of view movements.
+  11. Button X/Y Position: to set the button positions.
+  12. Analog Background Color (Red/Green/Blue): to set colors of the button background.
+  13. Analog Button Color (Red/Green/Blue): to set colors of the button.
+
+Version 1.6.0
+update 2023-09-25:
+  - Change the id prefix with i13.
+  - Change the button frames.
+  - Move the configuration table address.
+  - Remove \"Follow Button Direction\" setting.
+  - Add more settings."
+}
