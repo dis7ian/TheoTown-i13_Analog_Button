@@ -15,6 +15,7 @@
       "id": "$i13_analog_button00",
       "type": "script",
       "author": "ian`",
+      "min version": "11124",
       "script": "script.lua"
    }
 ]

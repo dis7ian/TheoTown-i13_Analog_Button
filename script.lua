@@ -1,4 +1,4 @@
---- i13 Analog Button v1.6.0
+--- i13 Analog Button v1.6.1
 -- Created by ian` on 2023-09-25
 
 local analog
@@ -51,7 +51,7 @@ local function resetConfig()
    config.showButton = true
    config.showInBuildMode = true
    config.showOnMove = true
-   config.speed = 25
+   config.speed = 50
    config.timeout = 750
 
    config.bgColorRed = 192
@@ -89,7 +89,7 @@ function script:init()
    config.showButton = init(config.showButton)
    config.showInBuildMode = init(config.showInBuildMode)
    config.showOnMove = init(config.showOnMove)
-   config.speed = config.speed or 25
+   config.speed = config.speed or 50
    config.timeout = config.timeout or 750
 
    config.bgColorRed = config.bgColorRed or 192
@@ -192,11 +192,11 @@ function script:settings()
       },
       {
          name = "Movement Speed",
-         desc = "Enter a number for speed. (Range 1 ~ 100)",
+         desc = "Enter a number for speed in percent.",
          value = config.speed,
          onChange = function(value)
             local value = tonumber(value)
-            config.speed = clamp(value, 1, 100)
+            config.speed = math.max(value, 1)
          end
       },
       {
@@ -337,13 +337,13 @@ function script:buildCityGUI()
          if tapToRotate then drawRotateIcon(x, y, w, h) end
       end,
       onUpdate = function(self)
-         local camX, camY, scale = City.getView()
-         if not self.camX then
-            self.camX = camX
-            self.camY = camY
-         end
-
          if config.hideButton then
+            local camX, camY = City.getView()
+            if not self.camX then
+               self.camX = camX
+               self.camY = camY
+            end
+
             if config.showOnMove and (self.camX ~= camX or self.camY ~= camY)
             then
                alpha = 1
@@ -382,24 +382,10 @@ function script:buildCityGUI()
 
             x = clamp(math.floor(cx - self.diffX), -10, 10)
             y = clamp(math.floor(cy - self.diffY), -10, 10)
-            local speed = (config.speed / scale) / 100
-            local moveX = (x / 10) * speed
-            local moveY = (y / 10) * speed
-
-            if City.getRotation() == 1 then
-               camX, camY = cityHeight - camY, camX
-               moveX, moveY = moveY, -moveX
-            elseif City.getRotation() == 2 then
-               camX = cityWidth - camX
-               camY = cityHeight - camY
-               moveX = -moveX
-               moveY = -moveY
-            elseif City.getRotation() == 3 then
-               camX, camY = camY, cityWidth - camX
-               moveX, moveY = -moveY, moveX
-            end
-
-            City.setView(camX + moveX, camY - moveY)
+            local speed = config.speed / 100
+            local moveX = -x * speed
+            local moveY = -y * speed
+            City.move(moveX, moveY)
             self:setPosition(x, y)
             return
          end
@@ -420,7 +406,6 @@ function script:buildCityGUI()
 
          local rotation = City.getRotation() + 1
          if rotation > 3 then rotation = 0 end
-
          City.setRotation(rotation)
          tapToRotate = nil
       end

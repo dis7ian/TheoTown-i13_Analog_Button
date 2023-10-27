@@ -7,7 +7,7 @@
    "category": "tools",
    "url": "https://github.com/dis7ian/TheoTown-i13_Analog_Button/",
    "multiplayer": true,
-   "min version": 11045,
+   "min version": 11124,
    "text": "This tool will be helped for mobile users to move the city view from end to end easily.
 
 Plugin Settings:
@@ -25,7 +25,10 @@ Plugin Settings:
   12. Analog Background Color (Red/Green/Blue): to set colors of the button background.
   13. Analog Button Color (Red/Green/Blue): to set colors of the button.
 
-Version 1.6.0
+Version 1.6.1
+update 2023-10-23:
+  - Fix movements issue.
+
 update 2023-09-25:
   - Change the id prefix with i13.
   - Change the button frames.
