@@ -1,21 +1,8 @@
 [
    {
-      "id": "$i13_analog_button_frame00",
-      "type": "animation",
-      "author": "ian`",
-      "frames": [{
-         "bmp": "analogButton.png",
-         "w": 60,
-         "target w": 30,
-         "target h": 30,
-         "count": 2
-      }]
-   },
-   {
       "id": "$i13_analog_button00",
       "type": "script",
       "author": "ian`",
-      "min version": "11124",
       "script": "script.lua"
    }
 ]
